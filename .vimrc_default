@@ -1,0 +1,43 @@
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+
+set showcmd
+
+set foldmethod=indent
+set foldlevel=99
+
+colorscheme desert
+set background=dark
+
+execute pathogen#infect()
+syntax on " syntax highlighing
+filetype on " try to detect filetypes
+filetype plugin indent on " enable loading indent file for filetype
+
+" 'quote' a word
+nnoremap qw :silent! normal mpea'<Esc>bi'<Esc>`pl
+" double "quote" a word
+nnoremap qd :silent! normal mpea"<Esc>bi"<Esc>`pl
+" remove quotes from a word
+nnoremap wq :silent! normal mpeld bhd `ph<CR>
+
+" keymappings
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+map <leader>td <Plug>TaskList
+map <leader>g :GundoToggle<CR>
+let g:pep8_map='<leader>8'
+
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+nmap <leader>a <Esc>:Ack!
+
+%{fugitive#statusline()}
